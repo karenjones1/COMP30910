@@ -41,7 +41,6 @@ def login():
         password = request.form['password']
 
         Username = User.query.filter_by(username=name).first()
-        print("password: " + Username.password)
         
         session['username'] = request.form['username']
         
