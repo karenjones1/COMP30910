@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+{% extends 'layout.html' %}
+{% block body %}
+<html>
+<head>
+<script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"/> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href = "style.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<title>Wild Atlantic Way Recommendations</title> 
+    <script type="text/javascript" src="{{ url_for('static', filename='checkbox.js') }}"></script>
+    <script type="text/javascript" src="test1.js"></script>
+</head>
+<body>
+  <div class="row" id="error-container">
+    <div class="alert alert-error">
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+      {% if details_error %}
+        <p class="details_error"><strong>Error:</strong> {{username}} {{ details_error }}
+      {% endif %}
+        </p>
+    </div>
+  </div>
+  <div class="first-section-container">
+    <div class="first-section-form-container">
+      <form id="formid" action="/postjson" method="post">
+        <h3>{{username}} Where would you like to go?</h3>
+        <div class="w3-half">
+          Enter Start Destination:<br> 
+          <input type="text" placeholder="StartDestination" name="traveldestination" id="place-search-input" ><br>
+        </div>
+        <div class="w3-half">
+          Enter Final Destination:<br>
+          <input type="text" placeholder="FinalDestination" name="traveldestinationend" id="place-search-input-end" ><br>
+        </div>
+        Enter Duration Of Stay:<br>
+        <input type="number" placeholder="Num" name="durationofstay" min="1" max="7">
+      </form> 
+  <div> 
+    <h5>Choose Activities:</h5>
+    <ul class="accordion-list">
+      <li><button class="accordion">Food</button>
+        <div class="panel">
+          <div id="checkboxex">
+                <label for="CafeOrCoffeeShop"><input type="checkbox" id="CafeOrCoffeeShop"/>Cafe/Coffee Shop</label>
+                <label for="Restaurant"><input type="checkbox" id="Restaurant"/>Restaurant</label>
+          </div>
+        </div>
+      </li>
+      <li><button class="accordion">Cultural Activities</button>
+        <div class="panel">
+          <div id="checkboxex">
+            <label for="PlaceOfWorship"><input type="checkbox" id="PlaceOfWorship" name="placeOfWorship" >Churches</label>
+            <label for="Museum"><input type="checkbox" id="Museum" name="museum"> Museums</label>
+            <label for="ArtGallery"><input type="checkbox" id="ArtGallery" name="ArtGallery">Art Gallery</label>
+            <label for="LandmarksOrHistoricalBuildings"><input type="checkbox" id="LandmarksOrHistoricalBuildings" name="LandmarksOrHistoricalBuildings">Landmarks/Historical Buildings</label>
+          </div>
+        </div>
+      </li>
+      <li><button class="accordion">Beaches</button>
+        <div class="panel">
+          <div id="checkboxex">
+            <label for="Beach"><input type="checkbox" id="Beach" name="beach"> Beach</label>
+            <label for="Landform"><input type="checkbox" id="Landform" name="Landform"> Landforms</label>
+          </div>
+        </div>
+      </li>
+      <li><button class="accordion">Accomodation</button>
+      <div class="panel">
+         <div id="checkboxex"><label for="Hotel"><input type="checkbox" id="Hotel" name="Hotel" >Hotel</label>
+              <label for="Bed & Breakfast"><input type="checkbox" id="BedAndBreakfast" name="BedAndBreakfast">Bed & Breakfast</label>
+              <label for="Campground"><input type="checkbox" id="Campground" name="Campground" >Campground</label>
+              <label for="LodgingBusiness"><input type="checkbox" id="LodgingBusiness" name="LodgingBusiness" >Hostel</label>
+        </div>
+      </div>
+    </li>
+    <li><button class="accordion">Outdoor Activities</button>
+    <div class="panel">
+       <div id="checkboxex">
+
+            <label for="GolfCourse"><input type="checkbox" id="GolfCourse" name="GolfCourse" >Golf Course</label>
+            <label for="Park"><input type="checkbox" id="Park" name="Park">Park</label>
+            <label for="SportsActivityLocation"><input type="checkbox" id="SportsActivityLocation" name="SportsActivityLocation">Sporting Activities</label>  
+      </div>
+    </div>
+    </li>
+    <li><button class="accordion">Shopping</button>
+    <div class="panel">
+       <div id="checkboxex">
+            <label for="Stores"><input type="checkbox" id="Stores" name="Stores" >Stores</label>
+            <label for="BikeStore"><input type="checkbox" id="BikeStore" name="BikeStore">Bike Store</label>
+            <label for="ShoppingCentre"><input type="checkbox" id="ShoppingCentre" name="ShoppingCentre"> Shopping Centre</label>
+            <label for="LocalBusiness"><input type="checkbox" id="LocalBusiness" name="LocalBusiness"> Local Business</label>
+          </div>
+    </div>
+    </li>
+    </ul>
+
+<input class="btn" onclick="checkboxtest()" type="submit" value="Enter">
+</div>   
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  placeSearch({
+  key: 'bgfRX1pCkKZgL7Tx03A0Hvh4AGRO4Jsk',
+  container: document.querySelector( '#place-search-input')
+});
+</script>
+<script type="text/javascript">
+  placeSearch({
+  key: 'bgfRX1pCkKZgL7Tx03A0Hvh4AGRO4Jsk',
+  container: document.querySelector( '#place-search-input-end')
+});
+</script>
+
+<!-- Work Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+<div class="w3-quarter">
+<h2>About the Wild Atlantic Way</h2>
+<p> The Wild Atlantic Way is a scenic coastal drive which spans accross 9 Western counties. Explore the 
+views and extraordinary scenery along the route and dive into the culture.</p>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card w3-white">
+  <img class="image-container" src="/static/cliffs-of-moher.jpg" alt="cliff" style="width:100%">
+  <div class="w3-container">
+  <h3>The Outdoors</h3>
+  <p>The Wild Atlantic Way offers spectacular scenery. You can take in the sights the Western counties have to offer 
+  from the beautiful beaches in Donegal to the lakes and mountains of Kilarney. The Wild Atlantic Way has something
+  for everyone.</p>
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card w3-white">
+  <img class="image-container" src="/static/golf-course.jpg" alt="golf" style="width:100%">
+  <div class="w3-container">
+  <h3>Golf</h3>
+  <p>Enjoy golf accross the island of Ireland. Offering world-class golf courses in extraordinary locations,
+  theres no better place to look than those on the Wild Alantic Way. With both links and parkland courses on offer, you won't know where to play first!</p>
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card w3-white">
+  <img class="image-container" src="/static/food.jpg" alt="food">
+  <div class="w3-container">
+  <h3>Food</h3>
+  <p>Come and enjoy the food that Ireland has to offer. Situated along the coast, the Wild Atlantic Way is no
+  short of shellfish fresh from the Atlantic. From Clonakilty Blackpudding, Mulroy Bay Mussels and Achill Mountain Lamb. The Wild Atlantic Way is full of diversity and flavour.</p>
+  </div>
+  </div>
+</div>
+
+</div>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body id="myPage">
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Us</h4>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+
+<!--This opens up the accordion of the checkboxes-->
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+{% endblock %}
+</html>

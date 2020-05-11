@@ -1,0 +1,309 @@
+{% extends 'layout.html' %}
+{% block body %}
+<html>
+<head>
+ <script src="https://api.mqcdn.com/sdk/mapquest-gl-js/v0.4.0/mapquest-gl.js"></script>
+ <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-gl-js/v0.4.0/mapquest-gl.css"/>
+ <link rel="stylesheet" type="text/css" href = "style-post.css" />
+ <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+ <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+ <script type="text/javascript" src="{{ url_for('static', filename='ratetest.js') }}"></script>
+ <script type="text/javascript" src="ratetest.js"></script>
+ 
+
+ <!-- Header -->
+ <div class="container-try">
+  <h1 class="centered">Your Recommendations</h1>
+  <h3 class="sub-title-position">Enjoy Your Trip</h3>
+</div>
+</div>
+
+<head>
+  <title>Attractions Table</title>
+</head>
+
+<script type="text/javascript">
+  window.onload = function() {
+    L.mapquest.key = 'bgfRX1pCkKZgL7Tx03A0Hvh4AGRO4Jsk';
+
+    var map = L.mapquest.map('map', {
+      center: [53.57293832648609,-8.074951171875],
+      layers: L.mapquest.tileLayer('map'),
+      zoom: 7
+    });
+
+    {% for items in loc_list %}
+    L.marker([ {{items.lat}}, {{items.lng}}], {
+      icon: L.mapquest.icons.marker(),
+      draggable: false
+    }).bindPopup('{{items.name}}').addTo(map);
+    {% endfor %}
+
+    {% for items in loc_list_accom %} 
+    L.marker([ {{items.lat}}, {{items.lng}}], {
+      icon: L.mapquest.icons.marker(),
+      draggable: false
+    }).bindPopup('{{items.name}}').addTo(map);
+    {% endfor %}      
+    
+  };
+  
+</script>
+</head>
+
+
+<div class="map-list-container">
+  <div id="map"></div>
+  <div class="map-list">
+    {% for day in Location %} 
+    <table class="table table-hover table-sm table-secondary " border = "1" cellpadding = "1" cellspacing = "1" width="14%">
+      <thead>                  
+       <th class="table-primary" colspan="6">Day {{loop.index}}</th>
+
+       <tr> 
+        <th>Name</th>
+        <th>URL</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Delete</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr>
+       {% for items in day %} 
+       <tr class="info-row">
+        <td>{{items.name}}</td>
+        {% if items.url %}
+        <td><a class="button" href="{{ items.url}}"> View </a></td> 
+        {% else %}
+        <td><a class="button"> N/A </a></td> 
+        {% endif %}
+        <td>{{items.typeAttr}}</td>
+        <td>{{items.addressLocality}}, {{items.addressRegion}}</td>
+        <td class="table-danger" >Remove</td>
+        <td><input type="number" placeholder="Rating" class="rating" min="0" max="5" >
+          <input class="btn btn-default" onclick= "saveRecommendations(this)" type="submit" value="Enter" ></td>
+          
+        </tr>
+        
+        
+        {% endfor %}
+      </tr>
+
+    </table>
+    {% endfor %}
+  </tbody>
+
+
+  <!--create table for accomodation -->
+  {% for items in km_accom %} 
+  <table class="table table-hover table-sm table-success " border = "1" cellpadding = "1" cellspacing = "1" width="50">
+    <thead>                  
+     <th class="table-primary" colspan="6">Accommodation for Night {{loop.index}}</th>
+
+     <tr> 
+      <th>Name</th>
+      <th>URL</th>
+      <th>Type</th>
+      <th>Location</th>
+      <th>Delete</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr>
+     
+    <tr class="info-row">
+      <td>{{items.name}}</td>
+      <td><a class="button" href="{{ items.url}}"> View </a></td> 
+      <td>{{items.typeAttr}}</td>
+      <td>{{items.addressLocality}}, {{items.addressRegion}}</td>
+      <!-- <td>{{items.addressRegion}}</td> -->
+      <td class="table-danger" >Remove</td>
+      <td><input type="number" placeholder="Rating " class="rating" min="0" max="5" >
+        <input class="btn btn-default" onclick= "saveRecommendations(this)" type="submit" value="Enter" ></td>
+        
+      </tr>
+      
+    </table>
+    {% endfor %}
+  </tbody>
+
+</div>
+</div>
+
+<script>
+  
+  var index, tableArr = document.getElementsByClassName('table');
+  for (var i = 0; i < tableArr.length; i++) {
+    table = tableArr[i];
+              console.log(tableArr[i])//returns each of the tables
+              
+              for(var x = 1; x < table.rows.length; x++)
+              {
+                if (table.rows[x].cells[4]){
+                  if (table.rows[x].cells[4].innerHTML == "Remove"){
+                    console.log(table.rows[x].cells[4].innerHTML)
+                    table.rows[x].cells[4].onclick = function()
+                    {
+                      var c = confirm("Are you sure you want to delete this attraction?");
+                      if(c === true)
+                      {
+                        index = this.parentElement.rowIndex; // row of parent element
+                        console.log(this.parentElement.parentElement.parentElement) //returns whole table 
+                        console.log(this)
+                        myTable = this.parentElement.parentElement.parentElement;
+                        myTable.deleteRow(index)
+
+                      }
+                      
+                    };
+                  }
+                }
+                
+              }
+            }    
+          </script>
+
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          
+
+
+
+          <!-- Site footer -->
+          <footer class="site-footer">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <h6>About</h6>
+                  <p class="text-justify">Thank you for taking part. Your feedback is appreciated and is important for 
+                    creating more customised recommendations for your next trip! If you wish to submit feedback, please <a href="/questionnaire">Click Here</a> to submit. </p>
+                  </div>
+                  
+
+                  
+                  <div class="col-xs-6 col-md-3">
+                    <h6>Highlights of the Wild Atlantic Way</h6>
+                    <ul class="footer-links">
+                      <li><a href="http://www.heritageireland.ie/en/west/ceidefields/">Céide Fields</a></li>
+                      <li><a href="http://www.croagh-patrick.com">Croagh Patrick</a></li>
+                      <li><a href="http://www.ballycroynationalpark.ie">Wild Nephin Ballycroy National Park</a></li>
+                      <li><a href="http://www.connemaranationalpark.ie">Connemara National Park</a></li>
+                      <li><a href="http://www.govisitinishowen.com">Shroove Beach</a></li>
+                      <li><a href="http://www.doonbeggolfclub.com">Doonbeg Golf Club</a></li>
+                      <li><a href="http://www.burren.ie">The Burren</a></li>
+                      <li><a href="http://www.killarneynationalpark.ie/">Killarney National Park</a></li>
+                      <li><a href="http://www.skelligexperience.com">The Skellig</a></li>
+                      <li><a href="http://www.katekearneyscottage.com">Kate Kearney's Cottage</a></li>
+                      
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
+                     <a href="#">Scanfcode</a>.
+                   </p>
+                 </div>
+
+                 
+               </div>
+             </div>
+           </footer>
+
+           
+           {% endblock %}
+           </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

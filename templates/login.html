@@ -1,0 +1,33 @@
+<link rel="stylesheet" type="text/css" href = "style.css" />
+{% extends 'layout.html' %}
+{% block body %}
+<html>
+<body>
+<div class = "bg-img">
+      <div id="login">
+          <div class="container">
+              <div id="login-row" class="row justify-content-center align-items-center">
+                  <div id="login-column" class="col-md-6">
+                      <div id="login-box" class="col-md-12">
+                      <h3 class="text-center text-info">Login</h3>
+                         <form action="/login" method="post">
+                                Username:<br>
+                                <input class="login-form-textbox" type="text" placeholder="Username" name="username" value="{{
+                                request.form.username }}"><br>
+                                  Password: <br>
+                                 <input class="login-form-textbox" type="password" placeholder="Password" name="password" value="{{
+                                  request.form.password }}"><br>
+                                 <br><input class="btn" type="submit" value="Login">
+                        </form>
+                            {% if error %}
+                              <p class="error"><strong>Error:</strong> {{ error }}
+                            {% endif %}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</body>
+{% endblock %}
+</html>

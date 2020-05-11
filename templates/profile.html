@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href = "style.css" />
+<html>
+<body>
+	<div class="profile-container">
+		<div id="profile">
+			<h1 class="title">
+				Welcome, {{ username }}!
+			</h1>
+		</div>
+
+		<thead>   
+			<table class="table table-hover table-sm table-secondary " border = "1" cellpadding = "1" cellspacing = "1" width="14%">               
+				<th class="table-profile" colspan="2">Your Interests:</th>
+
+			</thead>
+			<tbody>
+				<tr>
+					{% for items in user_likes %} 
+					<td>{{items}}</td>
+				</tr>
+				{% endfor %}
+
+				
+				{% for items in range(1) %}    
+				{% if items[0] %}
+				<td> You have not rated anything yet! </td>
+				{% endif %}
+				{% endfor %}
+			</div>
+		</body>
+		{% endblock %}
+
+		</html>>
