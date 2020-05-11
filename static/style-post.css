@@ -1,0 +1,213 @@
+
+
+/*scrollable list popular attractions*/
+.map-list-container {
+	width: 90%;
+	margin-left: 50px;
+	margin-top: 20px;
+	height: 655px;
+	border: 2px solid grey;
+	display: flex;
+}
+
+.map-list {
+	flex-grow: 1;
+	border: 2px solid black;
+	height: 100%;
+	max-width: 50%;
+	background-color: #e8e8e8;
+	word-wrap: break-word;
+	max-height: 800px;
+	overflow-y: scroll;
+}
+
+.map-list ul{
+	border: 1px solid black;
+	list-style-type: none; 
+	max-height: 100px;
+	overflow-y: scroll;
+}
+
+.map-list li{
+	border-bottom: 1px solid black;
+}
+
+#map{
+	flex-grow: 12;
+	border: 2px solid black;
+	height: 100%;
+}
+
+.table {
+	margin-top: 25px;
+}
+
+
+/*remove attraction*/
+table td:nth-child(6){
+	/*background-color: #F00;*/
+	cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline
+}
+
+
+.info-row td {
+	width: 14%;
+	max-width: 14%;
+}
+
+.table-primary {
+	text-align: center;
+
+}
+
+.table-danger{
+	cursor: pointer;
+}
+
+.rating{
+	width: 70px;
+}
+
+.btn{
+	border: 1px solid grey;
+	padding: 2px 4px;
+	margin-top: 2px;
+}
+
+.btn:hover{
+	border: 1px solid blue;
+}
+
+.w3-image{
+	height: 100px;
+	width: 100%;
+
+}
+
+
+
+.centered {
+  /*border: 1px solid white;*/
+  margin-top: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 40px;
+  color: white;
+  font-family: "Bubblegum Sans"
+}
+
+.sub-title-position{
+	/*border: 1px solid white;*/
+	margin-top: 2px;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 110px;
+  color: white;
+  font-family: "Bubblegum Sans"
+}
+
+
+.container-try {
+	background-image: url("/static/sea-rec.jpg");
+	height: 400px;
+  position: relative;
+  text-align: center;
+
+}
+
+
+/* privacy policy container */
+.container-policy{
+	margin-top: 50px;
+}
+
+/* Survey Container */
+.container-survey{
+	display: flex;
+	margin-top: 50px;
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+
+.site-footer
+{
+  margin-top: 20px;
+  background-color:#d1ccbc;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color: #4171f2;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color: #4171f2;
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+
+
+.copyright-text
+{
+  margin:0
+}
+
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}

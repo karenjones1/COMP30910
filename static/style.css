@@ -1,0 +1,254 @@
+
+
+/*buttons*/
+.accordion {
+  font-family:"Raleway", Arial, Helvetica, sans-serif;  /*  Roboto, Arial, sans-serif*/
+  background-color: #DADEE8;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  border: 1px dodgerblue;
+  margin-left: 0px;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+}
+
+img {
+	 float: right;
+}
+
+
+.first-section-container{
+  font-family: Roboto, Arial, sans-serif; 
+  background-image: url("static/sea.jpg");
+  background-size: cover; 
+  background-position: left;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  text-align:center;
+  margin:auto;
+  padding:0;
+  height: 100%;
+  width: 100%;
+  height: 150vh;
+}
+
+.first-section-form-container{
+	width: 50%;
+	height: 435px;
+	background-color: white; /*#EAEAEA*/
+	margin-left: 25%;
+	top: 200px;
+	position: relative;
+	border: solid black;
+
+}
+
+.accordion-list{
+	list-style: none;
+	width: 100%;
+	height: 150px;
+	border: solid white;
+	overflow: auto;
+	bottom: 0px;
+	margin-left: 0;
+	margin-right: 60px;
+	position: relative;
+}
+
+.first-section-form-container .btn{
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9
+}
+
+
+
+/*Css for login Page*/
+body {
+
+  background-image: url("static/beach.jpg");
+  background-size: cover; 
+  background-position: left;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  text-align:center;
+  margin:auto;
+  padding:0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #17a2b8;
+  /*height: 200vh;*/
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 180px;
+  max-width: 300px;
+  height: 250px;
+  margin-left: 140px;
+  border: 1px solid #9C9C9C;
+  background-color: white; /*#EAEAEA*/
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+
+.login-form-textbox{
+	width: 100%;
+}
+
+#login .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+
+/*Css for register Page*/
+body {
+	background-image: url("static/sea.jpg");
+  background-size: cover; 
+  background-position: left;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  text-align:center;
+  margin:auto;
+  padding:0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #17a2b8;
+  /*height: 200vh;*/
+}
+
+#register .container #register-row #register-column #register-box {
+font-family: Arial, Helvetica, sans-serif;
+  margin-top: 120px;
+  margin-left: 100px;
+  max-width: 400px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-color: white; /*#EAEAEA*/
+}
+#register .container #register-row #register-column #register-box #register-form {
+  padding: 20px;
+}
+#register .container #register-row #register-column #register-box #register-form #register-link {
+  margin-top: -85px;
+}
+
+.register-form-textbox input{
+	width: 100%;
+}
+
+.profile-container{
+	margin-top: 20px;
+}
+
+#register .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.warning-container{
+	width: 100%;
+	margin-top: 0px;
+}
+
+/*You have not logged in warning*/
+#alert {
+	position:fixed; 
+    top: 10px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9800; 
+    border-radius:0px
+    color: white;
+}
+
+#error-container {
+     margin-top:100px;
+     margin-left: 200px;
+     position: fixed;
+     color: white;
+     height: 40px;
+}
+
+/*Invalid Credentials error*/
+.error{
+	color: white;
+}
+
+/*Register warning*/
+.warning-container{
+	color: white;
+}
+
+/*images on homepage*/
+.image-container {
+	height: 225px;
+	width: 100%;
+}
+
+.w3-container{
+	height: 500px;
+}
+
+/*profile*/
+.table{
+	text-align: centre;
+	width: 30%;
+	margin-left: 450px;
+	margin-top: 100PX;
+}
+
+
+
+.btn-policy{
+  margin-top: 20px;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+
+
+.test{font-size: 50px;}
