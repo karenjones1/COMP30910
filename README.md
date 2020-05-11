@@ -19,9 +19,13 @@ A web-page is rendered with a map-based interface displaying the recommendations
 
 Installation:
 In order to run the above code, the following installations must be completed:  
-1) Python environment
+1) Python  
+2) Virtual Environment
 2) Flask   
-3) SQLAlchemy  
-4) WT-Forms   
+3) WT-Forms  
+4) SQLAlchemy 
+5) flask_sqlalchemy
+6) requests
+7) psycopg2
 
 The code is run by going to it's directory and typing the command: 'python app.py'
